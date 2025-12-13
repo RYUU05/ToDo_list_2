@@ -13,10 +13,60 @@ class CryptoListScreen extends StatefulWidget {
 class _CryptoListScreenState extends State<CryptoListScreen> {
   final _cryptoListBlock = CryptoListBlock();
   int currentIndex = 0;
+  List<String> selectedCoins = [
+    'BTC',
+    'ETH',
+    'BNB',
+    'SOL',
+    'AID',
+    'CAG',
+    'DOV',
+  ];
+
   @override
   void initState() {
     super.initState();
-    _cryptoListBlock.add(LoadCryptoList());
+    _cryptoListBlock.add(LoadCryptoList(selectedCoins));
+  }
+
+  void _showAddCoinDialog() {
+    var controller = TextEditingController();
+    showDialog(
+      context: context,
+      builder: (ctx) {
+        return AlertDialog(
+          backgroundColor: Color.fromARGB(255, 45, 45, 45),
+          title: Text('Add Crypto', style: TextStyle(color: Colors.white)),
+          content: TextField(
+            controller: controller,
+            style: TextStyle(color: Colors.white),
+            decoration: InputDecoration(
+              hintText: 'Enter cryptos name',
+              hintStyle: TextStyle(color: Colors.grey),
+            ),
+          ),
+          actions: [
+            TextButton(
+              onPressed: () => Navigator.pop(ctx),
+              child: Text('Cancel'),
+            ),
+            TextButton(
+              onPressed: () {
+                var symbol = controller.text.trim().toUpperCase();
+                if (symbol.isNotEmpty && !selectedCoins.contains(symbol)) {
+                  setState(() {
+                    selectedCoins.add(symbol);
+                  });
+                  _cryptoListBlock.add(LoadCryptoList(selectedCoins));
+                }
+                Navigator.pop(ctx);
+              },
+              child: Text('Add'),
+            ),
+          ],
+        );
+      },
+    );
   }
 
   @override
@@ -29,10 +79,16 @@ class _CryptoListScreenState extends State<CryptoListScreen> {
           'CryptoCurrenciesList',
           style: TextStyle(color: Colors.white),
         ),
+        actions: [
+          IconButton(
+            onPressed: _showAddCoinDialog,
+            icon: Icon(Icons.add, color: Colors.white),
+          ),
+        ],
       ),
       body: RefreshIndicator(
         onRefresh: () async {
-          _cryptoListBlock.add(LoadCryptoList());
+          _cryptoListBlock.add(LoadCryptoList(selectedCoins));
         },
         child: BlocBuilder<CryptoListBlock, CryptoListState>(
           bloc: _cryptoListBlock,
@@ -42,7 +98,7 @@ class _CryptoListScreenState extends State<CryptoListScreen> {
                 separatorBuilder: (context, index) => Divider(),
                 itemCount: state.coinsList.length,
                 itemBuilder: (context, index) {
-                  final coin = state.coinsList[index];
+                  var coin = state.coinsList[index];
                   return CryptoCoinTile(coin: coin);
                 },
               );

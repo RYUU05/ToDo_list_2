@@ -1,5 +1,8 @@
 part of 'crypto_list_block.dart';
 
-class CryptoListEvent {}
+abstract class CryptoListEvent {}
 
-class LoadCryptoList extends CryptoListEvent {}
+class LoadCryptoList extends CryptoListEvent {
+  List<String> symbols;
+  LoadCryptoList(this.symbols);
+}

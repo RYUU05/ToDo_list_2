@@ -2,24 +2,30 @@ import 'package:dio/dio.dart';
 import 'package:flutter_practice/repositories/crypto_coin/models/crypto_coin.dart';
 
 class CryptoCoinsRepositories {
-  Future<List<CryptoCoin>> getCoinsList() async {
-    final responce = await Dio().get(
-      'https://min-api.cryptocompare.com/data/pricemultifull?fsyms=BTC,ETH,BNB,SOL,AID,CAG,DOV&tsyms=USD',
+  Future<List<CryptoCoin>> getCoinsList(List<String> symbols) async {
+    var symbolsString = symbols.join(',');
+
+    var responce = await Dio().get(
+      'https://min-api.cryptocompare.com/data/pricemultifull?fsyms=$symbolsString&tsyms=USD',
     );
-    final data = responce.data as Map<String, dynamic>;
-    final dataRaw = data['RAW'] as Map<String, dynamic>;
-    final cryptoCoinsList = dataRaw.entries.map((e) {
-      final usdData =
+
+    var data = responce.data as Map<String, dynamic>;
+    var dataRaw = data['RAW'] as Map<String, dynamic>;
+
+    List<CryptoCoin> cryptoCoinsList = dataRaw.entries.map((e) {
+      var usdData =
           (e.value as Map<String, dynamic>)['USD'] as Map<String, dynamic>;
-      final price = usdData['PRICE'] as num;
-      final name = usdData['FROMSYMBOL'];
-      final imgUrl = usdData['IMAGEURL'];
+      var price = usdData['PRICE'] as num;
+      var name = usdData['FROMSYMBOL'];
+      var imgUrl = usdData['IMAGEURL'];
+
       return CryptoCoin(
         name: name,
         priceInUSD: double.parse(price.toStringAsFixed(2)),
         imgUrl: 'https://www.cryptocompare.com/$imgUrl',
       );
     }).toList();
+
     return cryptoCoinsList;
   }
 }
