@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "762788891698",
+    "project_id": "crypto-coin-list-eb43e",
+    "storage_bucket": "crypto-coin-list-eb43e.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:762788891698:android:6ce26118d0e3cea4db802b",
+        "android_client_info": {
+          "package_name": "com.example.flutter_practice"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDAUw0QE6xqtmaxBx-Eh_V9HHfwafHtdZ4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
