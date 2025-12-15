@@ -1,8 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_practice/features/crypto_favorites/screens/widgets/custom_appbar.dart';
 import 'package:flutter_practice/features/widgets/nav_bar.dart';
+import 'package:flutter_practice/repositories/auth/auth_repositories.dart';
 
 class CryptoFavoritesScreen extends StatefulWidget {
   const CryptoFavoritesScreen({super.key});
@@ -13,7 +13,6 @@ class CryptoFavoritesScreen extends StatefulWidget {
 
 class _CryptoFavoritesScreenState extends State<CryptoFavoritesScreen> {
   final firestore = FirebaseFirestore.instance;
-  final auth = FirebaseAuth.instance;
   List<Map<String, dynamic>> favorites = [];
   bool isLoading = true;
 
@@ -24,7 +23,7 @@ class _CryptoFavoritesScreenState extends State<CryptoFavoritesScreen> {
   }
 
   void loadFavorites() async {
-    var userId = auth.currentUser?.uid;
+    var userId = authRepo.value.currentuser?.uid;
     if (userId != null) {
       var snapshot = await firestore
           .collection('users')
@@ -39,7 +38,7 @@ class _CryptoFavoritesScreenState extends State<CryptoFavoritesScreen> {
   }
 
   void removeFavorite(String name) async {
-    var userId = auth.currentUser?.uid;
+    var userId = authRepo.value.currentuser?.uid;
     if (userId != null) {
       await firestore
           .collection('users')
@@ -57,7 +56,7 @@ class _CryptoFavoritesScreenState extends State<CryptoFavoritesScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: const Color.fromARGB(255, 31, 31, 31),
-      appBar: CustomAppBar(text: "BTC"),
+      appBar: CustomAppBar(text: "Favorite list"),
       body: isLoading
           ? Center(child: CircularProgressIndicator(color: Colors.white))
           : favorites.isEmpty

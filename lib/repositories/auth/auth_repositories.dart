@@ -19,13 +19,27 @@ class AuthRepositories {
   }
 
   Future<UserCredential> createAcc({required email, required password}) async {
-    return await firebaseAuth.createUserWithEmailAndPassword(
+    UserCredential userCred = await firebaseAuth.createUserWithEmailAndPassword(
       email: email,
       password: password,
     );
+
+    await userCred.user?.sendEmailVerification();
+
+    await firebaseAuth.signOut();
+
+    return userCred;
   }
 
   Future<void> signOut() async {
     await firebaseAuth.signOut();
+  }
+
+  bool isEmailVerified() {
+    return firebaseAuth.currentUser?.emailVerified ?? false;
+  }
+
+  Future<void> reloadUser() async {
+    await firebaseAuth.currentUser?.reload();
   }
 }

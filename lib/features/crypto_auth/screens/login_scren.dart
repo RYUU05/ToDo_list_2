@@ -6,8 +6,47 @@ class LoginScren extends StatelessWidget {
   final TextEditingController emal = TextEditingController();
   final TextEditingController paswd = TextEditingController();
 
-  void login() async {
-    await authRepo.value.signIn(email: emal.text, password: paswd.text);
+  void login(BuildContext context) async {
+    try {
+      await authRepo.value.signIn(email: emal.text, password: paswd.text);
+
+      var user = authRepo.value.firebaseAuth.currentUser;
+      await user?.reload();
+      user = authRepo.value.firebaseAuth.currentUser;
+
+      if (user?.emailVerified == true) {
+        Navigator.pushNamed(context, '/coinlist');
+      } else {
+        await authRepo.value.firebaseAuth.signOut();
+        showDialog(
+          context: context,
+          builder: (context) => AlertDialog(
+            title: Text('Email Not Verified'),
+            content: Text('Please verify your email first'),
+            actions: [
+              TextButton(
+                onPressed: () => Navigator.pop(context),
+                child: Text('OK'),
+              ),
+            ],
+          ),
+        );
+      }
+    } catch (e) {
+      showDialog(
+        context: context,
+        builder: (context) => AlertDialog(
+          title: Text('Login Failed'),
+          content: Text('Wrong email or password'),
+          actions: [
+            TextButton(
+              onPressed: () => Navigator.pop(context),
+              child: Text('OK'),
+            ),
+          ],
+        ),
+      );
+    }
   }
 
   @override
@@ -19,7 +58,12 @@ class LoginScren extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Image.asset("assets/images/icon.png"),
+              Image.asset(
+                "assets/images/icon.png",
+                width: 400,
+                height: 400,
+                fit: BoxFit.contain,
+              ),
               TxtFild(label: "Email", controller: emal, hintTxt: "Enter Email"),
               SizedBox(height: 15),
               TxtFild(
@@ -30,8 +74,7 @@ class LoginScren extends StatelessWidget {
               SizedBox(height: 50),
               ElevatedButton(
                 onPressed: () {
-                  login();
-                  Navigator.pushNamed(context, '/coinlist');
+                  login(context);
                 },
                 child: Text("Login"),
               ),
