@@ -76,6 +76,12 @@ class _CryptoCoinScreenState extends State<CryptoCoinScreen> {
     return Scaffold(
       backgroundColor: const Color.fromARGB(255, 31, 31, 31),
       appBar: AppBar(
+        leading: IconButton(
+          onPressed: () {
+            Navigator.pop(context);
+          },
+          icon: Icon(Icons.arrow_back, color: Colors.white),
+        ),
         backgroundColor: const Color.fromARGB(255, 31, 31, 31),
         title: Text(
           coin?.name ?? '...',
@@ -98,9 +104,15 @@ class _CryptoCoinScreenState extends State<CryptoCoinScreen> {
         ],
       ),
       body: Center(
-        child: Text(
-          '${coin?.priceInUSD}\$',
-          style: const TextStyle(color: Colors.white, fontSize: 20),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            SizedBox(child: Image.network(coin?.imgUrl ?? '')),
+            Text(
+              '${coin?.priceInUSD}\$',
+              style: const TextStyle(color: Colors.white, fontSize: 20),
+            ),
+          ],
         ),
       ),
     );

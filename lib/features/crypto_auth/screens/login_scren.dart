@@ -20,8 +20,14 @@ class LoginScren extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Image.asset("assets/images/icon.png"),
-              TxtFild(label: "Email", controller: emal),
-              TxtFild(label: "Password", controller: paswd),
+              TxtFild(label: "Email", controller: emal, hintTxt: "Enter Email"),
+              SizedBox(height: 15),
+              TxtFild(
+                label: "Password",
+                controller: paswd,
+                hintTxt: "Enter Password",
+              ),
+              SizedBox(height: 50),
               ElevatedButton(
                 onPressed: () {
                   login();

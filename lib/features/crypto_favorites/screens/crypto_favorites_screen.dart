@@ -1,6 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_practice/features/crypto_favorites/screens/widgets/custom_appbar.dart';
+import 'package:flutter_practice/features/widgets/nav_bar.dart';
 
 class CryptoFavoritesScreen extends StatefulWidget {
   const CryptoFavoritesScreen({super.key});
@@ -49,21 +51,13 @@ class _CryptoFavoritesScreenState extends State<CryptoFavoritesScreen> {
     }
   }
 
+  int currentIndex = 1;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: const Color.fromARGB(255, 31, 31, 31),
-      appBar: AppBar(
-        backgroundColor: const Color.fromARGB(255, 31, 31, 31),
-        title: Text(
-          'Favorites',
-          style: TextStyle(
-            color: Colors.white,
-            fontSize: 24,
-            fontWeight: FontWeight.bold,
-          ),
-        ),
-      ),
+      appBar: CustomAppBar(text: "BTC"),
       body: isLoading
           ? Center(child: CircularProgressIndicator(color: Colors.white))
           : favorites.isEmpty
@@ -102,6 +96,7 @@ class _CryptoFavoritesScreenState extends State<CryptoFavoritesScreen> {
                 );
               },
             ),
+      bottomNavigationBar: Navbar(currentIndex: currentIndex),
     );
   }
 }

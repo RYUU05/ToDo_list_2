@@ -16,10 +16,16 @@ class Register extends StatelessWidget {
         decoration: BoxDecoration(color: const Color.fromARGB(255, 31, 31, 31)),
         child: Center(
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              TxtFild(label: "email", controller: emal),
-              TxtFild(label: "Password", controller: paswd),
+              Image.asset("assets/images/icon.png"),
+              TxtFild(label: "email", controller: emal, hintTxt: "Enter Email"),
+              SizedBox(height: 15),
+              TxtFild(
+                label: "Password",
+                controller: paswd,
+                hintTxt: "Enter Password",
+              ),
+              SizedBox(height: 50),
               ElevatedButton(
                 onPressed: () async {
                   register();

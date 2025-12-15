@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_practice/features/crypto_list/block/crypto_list_block.dart';
 import 'package:flutter_practice/features/crypto_list/widgets/widgets.dart';
+import 'package:flutter_practice/features/widgets/nav_bar.dart';
 
 class CryptoListScreen extends StatefulWidget {
   const CryptoListScreen({super.key});
@@ -107,31 +108,7 @@ class _CryptoListScreenState extends State<CryptoListScreen> {
           },
         ),
       ),
-      bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: Color.fromARGB(255, 31, 31, 31),
-        selectedItemColor: Colors.white,
-        unselectedItemColor: Colors.grey,
-        currentIndex: currentIndex,
-        onTap: (index) {
-          if (index == 1) {
-            Navigator.pushNamed(context, '/favorites');
-          }
-          if (index == 2) {
-            Navigator.pushNamed(context, '/settings');
-          }
-        },
-        items: [
-          BottomNavigationBarItem(icon: Icon(Icons.list), label: 'List'),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.favorite),
-            label: 'Favorites',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.settings),
-            label: 'Settings',
-          ),
-        ],
-      ),
+      bottomNavigationBar: Navbar(currentIndex: currentIndex),
     );
   }
 }
