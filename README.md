@@ -5,5 +5,9 @@
   <img src="assets/for_doc/favorite_list.jpg" width="220" />
   <img src="assets/for_doc/settings.jpg" width="220" />
 </p>
-[![Demo](assets/for_doc/main_page.jpg)](https://github.com/user-attachments/assets/3b5b1d2d-8f8d-4126-8dde-f39cfb11dabc)
+<p align="center">
+  <a href="https://github.com/user-attachments/assets/3b5b1d2d-8f8d-4126-8dde-f39cfb11dabc">
+    <img src="assets/for_doc/main_page.jpg" width="300" alt="Demo Video Preview"/>
+  </a>
+</p>
 
