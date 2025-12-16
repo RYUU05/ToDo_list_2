@@ -7,15 +7,15 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:762788891698:android:6ce26118d0e3cea4db802b",
+        "mobilesdk_app_id": "1:762788891698:android:9433c4fe84f0eaf9db802b",
         "android_client_info": {
-          "package_name": "com.example.flutter_practice"
+          "package_name": "com.ryuu05.cryptoCoins"
         }
       },
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "Ur key"
+          "current_key": "AIzaSyDAUw0QE6xqtmaxBx-Eh_V9HHfwafHtdZ4"
         }
       ],
       "services": {
