@@ -53,8 +53,8 @@ class Register extends StatelessWidget {
             children: [
               Image.asset(
                 "assets/images/icon.png",
-                width: 200,
-                height: 200,
+                width: 400,
+                height: 400,
                 fit: BoxFit.contain,
               ),
               TxtFild(label: "email", controller: emal, hintTxt: "Enter Email"),
