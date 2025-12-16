@@ -107,9 +107,24 @@ class _CryptoCoinScreenState extends State<CryptoCoinScreen> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            SizedBox(child: Image.network(coin?.imgUrl ?? '')),
+            SizedBox(
+              child: Image.network(
+                coin?.imgUrl ?? '',
+                width: 200,
+                height: 200,
+                fit: BoxFit.contain,
+              ),
+            ),
             Text(
-              '${coin?.priceInUSD}\$',
+              'Price now: ${coin?.priceInUSD}\$',
+              style: const TextStyle(color: Colors.white, fontSize: 20),
+            ),
+            Text(
+              'Highest price last 24 hr: ${coin?.high24h}\$',
+              style: const TextStyle(color: Colors.white, fontSize: 20),
+            ),
+            Text(
+              'Lowest orice last 24 hr: ${coin?.low24h}\$',
               style: const TextStyle(color: Colors.white, fontSize: 20),
             ),
           ],

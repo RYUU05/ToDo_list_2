@@ -18,11 +18,15 @@ class CryptoCoinsRepositories {
       var price = usdData['PRICE'] as num;
       var name = usdData['FROMSYMBOL'];
       var imgUrl = usdData['IMAGEURL'];
+      var high24h = usdData['HIGH24HOUR'] as num;
+      var low24h = usdData['LOW24HOUR'] as num;
 
       return CryptoCoin(
         name: name,
         priceInUSD: double.parse(price.toStringAsFixed(2)),
         imgUrl: 'https://www.cryptocompare.com/$imgUrl',
+        high24h: double.parse(high24h.toStringAsFixed(2)),
+        low24h: double.parse(low24h.toStringAsFixed(2)),
       );
     }).toList();
 

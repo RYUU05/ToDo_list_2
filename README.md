@@ -1,17 +1,6 @@
-# flutter_practice
-
-A new Flutter project.
-
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
-# mob_app_dev_project
+![Login Page](assets/for_doc/login.jpg)
+![Main Page](assets/for_doc/main_page.jpg)
+![Detail Page](assets/for_doc/detail_page.jpg)
+![Favorite List](assets/for_doc/favorite_list.jpg)
+![Settings](assets/for_doc/settings.jpg)
+[Demo Video](https://github.com/user-attachments/assets/3b5b1d2d-8f8d-4126-8dde-f39cfb11dabc)
