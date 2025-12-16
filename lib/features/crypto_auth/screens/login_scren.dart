@@ -10,14 +10,14 @@ class LoginScren extends StatelessWidget {
     try {
       await authRepo.value.signIn(email: emal.text, password: paswd.text);
 
-      var user = authRepo.value.firebaseAuth.currentUser;
+      var user = authRepo.value.firebasauth.currentUser;
       await user?.reload();
-      user = authRepo.value.firebaseAuth.currentUser;
+      user = authRepo.value.firebasauth.currentUser;
 
       if (user?.emailVerified == true) {
         Navigator.pushNamed(context, '/coinlist');
       } else {
-        await authRepo.value.firebaseAuth.signOut();
+        await authRepo.value.firebasauth.signOut();
         showDialog(
           context: context,
           builder: (context) => AlertDialog(

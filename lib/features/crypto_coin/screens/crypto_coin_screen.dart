@@ -30,7 +30,7 @@ class _CryptoCoinScreenState extends State<CryptoCoinScreen> {
   void checkIfFavorite() async {
     var userId = authRepo.value.currentuser?.uid;
     if (userId != null && coin != null) {
-      var doc = await firestore
+      var doc = await firestor
           .collection('users')
           .doc(userId)
           .collection('favorites')
@@ -48,7 +48,7 @@ class _CryptoCoinScreenState extends State<CryptoCoinScreen> {
     var userId = authRepo.value.currentuser?.uid;
     if (userId == null || coin == null) return;
 
-    var favRef = firestore
+    var favRef = firestor
         .collection('users')
         .doc(userId)
         .collection('favorites')
