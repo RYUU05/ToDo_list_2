@@ -1,110 +1,54 @@
 # Crypto Tracker Mobile App
 
-A cross-platform **Flutter** mobile application for tracking cryptocurrency prices in real time, managing favorites, and securely authenticating users with Firebase.
+## About the Application
 
----
+This mobile application was developed as a cross-platform Flutter project for tracking cryptocurrency prices. The main goal of the app is to allow users to monitor popular cryptocurrencies in USD, view detailed price information, and manage a personal list of favorite coins. The application works on both iOS and Android platforms.
 
-##  Overview
+The app includes a secure authentication system, real-time data fetching from an external cryptocurrency API, and cloud-based storage for user preferences.
 
-This application allows users to monitor popular cryptocurrencies in **USD**, view detailed price information, and maintain a personalized list of favorite coins. The app is designed with clean architecture principles, secure authentication, and a modern UI.
+## What the App Does
 
----
+Users can track different cryptocurrencies and see their current price in USD. Some popular cryptocurrencies are available by default, but users can also add new coins to the list. For each coin, the app shows the current price as well as the highest and lowest prices for the day. Users can also add selected coins to a personal favorites list for quick access.
 
-##  Features
+To use the application, users must register and verify their email address. After verification, they can log in and access all features of the app.
 
--  **User Authentication**
-  - Email & password registration
-  - Email verification (Firebase Auth)
-  - Secure login & logout
+## Platforms
 
--  **Cryptocurrency Tracking**
-  - View list of cryptocurrencies
-  - Real-time price updates
-  - Daily **highest** and **lowest** prices
+The application is built with Flutter and is available for both iOS and Android devices.
 
--  **Favorites Management**
-  - Add/remove coins from favorites
-  - Favorites stored securely in **Firestore**
+## Project Architecture
 
--  **Live Updates**
-  - Pull-to-refresh to update prices
+The project follows a structured architecture that separates responsibilities to keep the code clean and maintainable.
 
--  **Settings**
-  - Logout from the current account
+Features are organized into separate modules. Each feature contains its own screens and widgets when needed. This approach makes the project easier to scale and understand.
 
----
+Repositories act as service layers. The authentication repository works with Firebase Authentication, while the crypto coin repository communicates with an external API to retrieve cryptocurrency data.
 
-##  Project Architecture
+Routing is handled through a centralized router that stores route names and their corresponding pages. This router is used for navigation when interacting with buttons and UI elements.
 
-The project follows a **feature-based architecture** for scalability and maintainability.
+An AuthLayout component is used to manage user state. It listens to Firebase authentication changes and decides which screen to load. If the user is logged in, the main page is shown automatically. If not, the login page is displayed.
 
-### 🔹 Features
-Each feature contains its own:
-- Screens
-- Widgets
-- Logic
+## Application Pages
 
-### 🔹 Repositories
-Repositories act as service layers:
-- **Auth Repository** – handles Firebase Authentication
-- **Crypto Coin Repository** – communicates with an external API to fetch cryptocurrency data
+The first screen of the application is the login page. From there, users can navigate to the registration page and back. During registration, Firebase sends a verification link to the user’s email address. The user must verify their email before accessing the main features of the app. Sometimes the verification email may appear in the spam folder, so users should check carefully.
 
-### 🔹 Router
-A centralized route configuration that maps route names to screens, used for navigation across the app.
+After logging in, the user is taken to the main page. This page displays a list of cryptocurrency coins. Users can add a new coin by clicking the plus icon. The list can be refreshed by swiping down, which updates the prices.
 
-### 🔹 AuthLayout
-A conditional layout that listens to Firebase authentication state:
-- If the user is authenticated → loads the main screen
-- If not authenticated → loads the login screen
+When a user selects a coin from the main page, the detail page opens. On this page, users can see the current price of the coin, as well as the highest and lowest prices for that day. From here, a coin can be added to or removed from the personal favorites list.
 
----
+The favorites page allows users to manage their favorite coins. Favorite data is stored in Firestore, and users can remove coins from the list at any time.
 
-##  App Pages
+The settings page provides a simple option to log out from the current account.
 
-###  Login / Register
-- Entry point of the application
-- Users can switch between login and registration
-- After registration, a **verification email** is sent (check spam folder if not visible)
+## Mobile Security
 
-###  Main Page
-- Displays a list of cryptocurrencies
-- Add new coins using the **➕ button**
-- Pull down to refresh prices
+User security and data protection are important aspects of the application. Firebase Authentication is used to handle login and registration securely. User passwords are never stored in the application.
 
-###  Detail Page
-- Shows detailed information about a selected coin:
-  - Current price
-  - Highest price (24h)
-  - Lowest price (24h)
-- Add or remove the coin from favorites
+The app does not request access to sensitive device permissions. It does not use the camera, location, or storage of the device.
 
-###  Favorites Page
-- Displays user's favorite cryptocurrencies
-- Data stored in **Firestore**
-- Coins can be removed from favorites
+User favorite lists are stored securely in Firestore. No unnecessary personal data is collected or shared.
 
-###  Settings Page
-- Logout from the current account
-
----
-
-##  Mobile Security
-
-### Data Protection
-- Authentication handled by **Firebase Auth**
-- Passwords are **never stored** in the application
-
-### App Permissions
-- No access to sensitive device permissions
-- Does **not** use camera, location, or storage
-
-### Privacy
-- Only user favorites are stored in Firestore
-- No personal data is shared with third parties
-
----
-
-##  Screenshots
+## Screenshots
 
 <p align="center">
   <img src="assets/for_doc/login.jpg" width="220" />
@@ -114,40 +58,17 @@ A conditional layout that listens to Firebase authentication state:
   <img src="assets/for_doc/settings.jpg" width="220" />
 </p>
 
----
-
-##  Demo Video
+## Demo Video
 
 <p align="center">
   <a href="https://github.com/user-attachments/assets/3b5b1d2d-8f8d-4126-8dde-f39cfb11dabc">
-    <img src="assets/for_doc/main_page.jpg" width="300" alt="Demo Video Preview"/>
+    <img src="assets/for_doc/main_page.jpg" width="300" alt="Demo Video Preview" />
   </a>
 </p>
 
----
+## Authors
 
-##  Tech Stack
+This application was developed by Nursultan and Mukagali.
 
-- **Flutter**
-- **Dart**
-- **Firebase Authentication**
-- **Cloud Firestore**
-- **External Crypto API**
-
----
-
-##  Authors
-
-- **Nursultan**
-- **Mukagali**
-
----
-
-##  Notes
-
-- Email verification is required before full access
-- Internet connection is required to fetch live crypto data
-
----
-
+Thank you for taking the time to explore our mobile application.
 
