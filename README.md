@@ -68,7 +68,6 @@ User favorite lists are stored securely in Firestore. No unnecessary personal da
 
 ## Authors
 
-This application was developed by Nursultan and Mukagali.
+This application was developed by Nursultan Nazarbay and Mukagali Amankossov.
 
-Thank you for taking the time to explore our mobile application.
 
