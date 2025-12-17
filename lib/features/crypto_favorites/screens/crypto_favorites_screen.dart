@@ -1,21 +1,18 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_practice/features/crypto_favorites/screens/widgets/custom_appbar.dart';
+import 'package:flutter_practice/features/crypto_favorites/widgets/custom_appbar.dart';
 import 'package:flutter_practice/features/widgets/nav_bar.dart';
+import 'package:flutter_practice/repositories/auth/auth_repositories.dart';
 
-class CryptoFavoritesScreen extends StatefulWidget {
-  const CryptoFavoritesScreen({super.key});
+class Favorit extends StatefulWidget {
+  const Favorit({super.key});
 
   @override
-  State<CryptoFavoritesScreen> createState() => _CryptoFavoritesScreenState();
+  State<Favorit> createState() => FavoritStat();
 }
 
-class _CryptoFavoritesScreenState extends State<CryptoFavoritesScreen> {
-  final firestore = FirebaseFirestore.instance;
-  final auth = FirebaseAuth.instance;
-  List<Map<String, dynamic>> favorites = [];
-  bool isLoading = true;
+class FavoritStat extends State<Favorit> {
+  List<Map<String, dynamic>> favorits = [];
+  bool isloding = true;
 
   @override
   void initState() {
@@ -24,24 +21,24 @@ class _CryptoFavoritesScreenState extends State<CryptoFavoritesScreen> {
   }
 
   void loadFavorites() async {
-    var userId = auth.currentUser?.uid;
+    var userId = authRepo.value.currentuser?.uid;
     if (userId != null) {
-      var snapshot = await firestore
+      var snapshot = await firestor
           .collection('users')
           .doc(userId)
           .collection('favorites')
           .get();
       setState(() {
-        favorites = snapshot.docs.map((doc) => doc.data()).toList();
-        isLoading = false;
+        favorits = snapshot.docs.map((doc) => doc.data()).toList();
+        isloding = false;
       });
     }
   }
 
   void removeFavorite(String name) async {
-    var userId = auth.currentUser?.uid;
+    var userId = authRepo.value.currentuser?.uid;
     if (userId != null) {
-      await firestore
+      await firestor
           .collection('users')
           .doc(userId)
           .collection('favorites')
@@ -57,10 +54,10 @@ class _CryptoFavoritesScreenState extends State<CryptoFavoritesScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: const Color.fromARGB(255, 31, 31, 31),
-      appBar: CustomAppBar(text: "BTC"),
-      body: isLoading
+      appBar: CustomAppBar(text: "Favorite list"),
+      body: isloding
           ? Center(child: CircularProgressIndicator(color: Colors.white))
-          : favorites.isEmpty
+          : favorits.isEmpty
           ? Center(
               child: Text(
                 'No favorites yet',
@@ -68,9 +65,9 @@ class _CryptoFavoritesScreenState extends State<CryptoFavoritesScreen> {
               ),
             )
           : ListView.builder(
-              itemCount: favorites.length,
+              itemCount: favorits.length,
               itemBuilder: (context, index) {
-                var fav = favorites[index];
+                var fav = favorits[index];
                 return Card(
                   color: Color.fromARGB(255, 45, 45, 45),
                   margin: EdgeInsets.symmetric(horizontal: 16, vertical: 8),

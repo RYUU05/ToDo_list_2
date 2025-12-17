@@ -12,6 +12,6 @@ final routes = {
   '/register': (context) => Register(),
   '/coinlist': (context) => const CryptoListScreen(),
   '/coin': (context) => const CryptoCoinScreen(),
-  '/favorites': (context) => const CryptoFavoritesScreen(),
+  '/favorites': (context) => const Favorit(),
   '/settings': (context) => const CryptoSettingsScreen(),
 };

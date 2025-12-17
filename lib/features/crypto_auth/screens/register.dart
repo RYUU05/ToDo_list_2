@@ -5,8 +5,42 @@ import 'package:flutter_practice/repositories/auth/auth_repositories.dart';
 class Register extends StatelessWidget {
   final TextEditingController emal = TextEditingController();
   final TextEditingController paswd = TextEditingController();
-  void register() async {
-    await authRepo.value.createAcc(email: emal.text, password: paswd.text);
+
+  void register(BuildContext context) async {
+    try {
+      await authRepo.value.createAcc(email: emal.text, password: paswd.text);
+
+      showDialog(
+        context: context,
+        builder: (context) => AlertDialog(
+          title: Text('Check Your Email'),
+          content: Text('We sent a verification link to ${emal.text}'),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.pop(context);
+                Navigator.pushNamed(context, '/login');
+              },
+              child: Text('OK'),
+            ),
+          ],
+        ),
+      );
+    } catch (e) {
+      showDialog(
+        context: context,
+        builder: (context) => AlertDialog(
+          title: Text('Error'),
+          content: Text(e.toString()),
+          actions: [
+            TextButton(
+              onPressed: () => Navigator.pop(context),
+              child: Text('OK'),
+            ),
+          ],
+        ),
+      );
+    }
   }
 
   @override
@@ -17,7 +51,12 @@ class Register extends StatelessWidget {
         child: Center(
           child: Column(
             children: [
-              Image.asset("assets/images/icon.png"),
+              Image.asset(
+                "assets/images/icon.png",
+                width: 400,
+                height: 400,
+                fit: BoxFit.contain,
+              ),
               TxtFild(label: "email", controller: emal, hintTxt: "Enter Email"),
               SizedBox(height: 15),
               TxtFild(
@@ -27,9 +66,8 @@ class Register extends StatelessWidget {
               ),
               SizedBox(height: 50),
               ElevatedButton(
-                onPressed: () async {
-                  register();
-                  Navigator.pushNamed(context, '/coinlist');
+                onPressed: () {
+                  register(context);
                 },
                 child: Text("Register"),
               ),
