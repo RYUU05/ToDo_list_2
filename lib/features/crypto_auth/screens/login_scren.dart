@@ -52,48 +52,56 @@ class LoginScren extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-        decoration: BoxDecoration(color: const Color.fromARGB(255, 31, 31, 31)),
-        child: Center(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Image.asset(
-                "assets/images/icon.png",
-                width: 400,
-                height: 400,
-                fit: BoxFit.contain,
-              ),
-              TxtFild(label: "Email", controller: emal, hintTxt: "Enter Email"),
-              SizedBox(height: 15),
-              TxtFild(
-                label: "Password",
-                controller: paswd,
-                hintTxt: "Enter Password",
-              ),
-              SizedBox(height: 50),
-              ElevatedButton(
-                onPressed: () {
-                  login(context);
-                },
-                child: Text("Login"),
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    "Don't have an account? ",
-                    style: TextStyle(color: Colors.white),
-                  ),
-                  TextButton(
-                    onPressed: () {
-                      Navigator.pushNamed(context, '/register');
-                    },
-                    child: Text("Register"),
-                  ),
-                ],
-              ),
-            ],
+      body: SingleChildScrollView(
+        child: Container(
+          decoration: BoxDecoration(
+            color: const Color.fromARGB(255, 31, 31, 31),
+          ),
+          child: Center(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Image.asset(
+                  "assets/images/icon.png",
+                  width: 400,
+                  height: 400,
+                  fit: BoxFit.contain,
+                ),
+                TxtFild(
+                  label: "Email",
+                  controller: emal,
+                  hintTxt: "Enter Email",
+                ),
+                SizedBox(height: 15),
+                TxtFild(
+                  label: "Password",
+                  controller: paswd,
+                  hintTxt: "Enter Password",
+                ),
+                SizedBox(height: 50),
+                ElevatedButton(
+                  onPressed: () {
+                    login(context);
+                  },
+                  child: Text("Login"),
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      "Don't have an account? ",
+                      style: TextStyle(color: Colors.white),
+                    ),
+                    TextButton(
+                      onPressed: () {
+                        Navigator.pushNamed(context, '/register');
+                      },
+                      child: Text("Register"),
+                    ),
+                  ],
+                ),
+              ],
+            ),
           ),
         ),
       ),

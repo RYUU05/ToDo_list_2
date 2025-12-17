@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_practice/features/crypto_favorites/screens/widgets/custom_appbar.dart';
+import 'package:flutter_practice/features/crypto_favorites/widgets/custom_appbar.dart';
 import 'package:flutter_practice/features/widgets/nav_bar.dart';
 import 'package:flutter_practice/repositories/auth/auth_repositories.dart';
 

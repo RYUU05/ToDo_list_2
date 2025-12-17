@@ -1,73 +1,39 @@
-# Crypto Tracker Mobile App
+Crypto Tracker Mobile App
 
-## About the Application
+Overview
 
-This mobile application was developed as a cross-platform Flutter project for tracking cryptocurrency prices. The main goal of the app is to allow users to monitor popular cryptocurrencies in USD, view detailed price information, and manage a personal list of favorite coins. The application works on both iOS and Android platforms.
+This mobile application is a cross-platform project built with Flutter and designed for tracking cryptocurrency prices. The main purpose of the app is to help users monitor the prices of popular cryptocurrencies in USD, view detailed daily price information, and manage a personal list of favorite coins. The application works on both iOS and Android devices.
+The app includes user authentication, real-time data loading from an external cryptocurrency API, and cloud storage for saving user preferences.
 
-The app includes a secure authentication system, real-time data fetching from an external cryptocurrency API, and cloud-based storage for user preferences.
+Application Functionality
 
-## What the App Does
+Users can track multiple cryptocurrencies and see their current prices in USD. Some well-known coins are available by default, but users can also add other cryptocurrencies manually. For each coin, the app displays the current price as well as the highest and lowest values for the current day.
+Users can mark selected coins as favorites to access them more quickly later. To use the application, users must register and confirm their email address. After successful verification, full access to the app becomes available.
 
-Users can track different cryptocurrencies and see their current price in USD. Some popular cryptocurrencies are available by default, but users can also add new coins to the list. For each coin, the app shows the current price as well as the highest and lowest prices for the day. Users can also add selected coins to a personal favorites list for quick access.
+Supported Platforms
 
-To use the application, users must register and verify their email address. After verification, they can log in and access all features of the app.
+The application is developed using Flutter and supports both iOS and Android mobile platforms.
 
-## Platforms
+Project Architecture
 
-The application is built with Flutter and is available for both iOS and Android devices.
+The project uses a clear and organized architecture to keep the code readable and easy to maintain.
+The application is divided into feature-based modules. Each feature contains its own screens and widgets when needed, which makes the project easier to understand and scale in the future.
+Repositories act as service layers in the project. The authentication repository works with Firebase Authentication, while the cryptocurrency repository communicates with an external API to retrieve price data.
+Navigation inside the app is handled using a centralized router that stores route names and their corresponding screens. This router is used throughout the application when interacting with buttons and UI elements.
+The AuthLayout component manages the user’s authentication state. It listens for changes in Firebase Authentication and decides which screen should be shown. If the user is logged in, the main page is displayed automatically; otherwise, the login screen is shown.
 
-## Project Architecture
+Application Pages
 
-The project follows a structured architecture that separates responsibilities to keep the code clean and maintainable.
+The first screen users see is the login page. From there, they can navigate to the registration page and return if needed. During registration, Firebase sends a verification link to the user’s email address. Email verification is required before accessing the main features of the app. In some cases, the verification email may appear in the spam folder.
+After logging in, users are taken to the home page, where a list of cryptocurrencies is displayed. New coins can be added using the plus button, and the list can be refreshed by swiping down to load updated prices.
+When a user selects a coin from the list, a details page opens. This page shows the current price of the coin along with its daily high and low values. From this screen, users can add or remove the coin from their favorites list.
 
-Features are organized into separate modules. Each feature contains its own screens and widgets when needed. This approach makes the project easier to scale and understand.
+Favorites Page
 
-Repositories act as service layers. The authentication repository works with Firebase Authentication, while the crypto coin repository communicates with an external API to retrieve cryptocurrency data.
+The favorites page allows users to manage their selected favorite coins. This data is stored in Firestore, and users can remove coins from the list at any time.
+The settings page provides a simple option to log out of the current account.
 
-Routing is handled through a centralized router that stores route names and their corresponding pages. This router is used for navigation when interacting with buttons and UI elements.
+Mobile Security
 
-An AuthLayout component is used to manage user state. It listens to Firebase authentication changes and decides which screen to load. If the user is logged in, the main page is shown automatically. If not, the login page is displayed.
-
-## Application Pages
-
-The first screen of the application is the login page. From there, users can navigate to the registration page and back. During registration, Firebase sends a verification link to the user’s email address. The user must verify their email before accessing the main features of the app. Sometimes the verification email may appear in the spam folder, so users should check carefully.
-
-After logging in, the user is taken to the main page. This page displays a list of cryptocurrency coins. Users can add a new coin by clicking the plus icon. The list can be refreshed by swiping down, which updates the prices.
-
-When a user selects a coin from the main page, the detail page opens. On this page, users can see the current price of the coin, as well as the highest and lowest prices for that day. From here, a coin can be added to or removed from the personal favorites list.
-
-The favorites page allows users to manage their favorite coins. Favorite data is stored in Firestore, and users can remove coins from the list at any time.
-
-The settings page provides a simple option to log out from the current account.
-
-## Mobile Security
-
-User security and data protection are important aspects of the application. Firebase Authentication is used to handle login and registration securely. User passwords are never stored in the application.
-
-The app does not request access to sensitive device permissions. It does not use the camera, location, or storage of the device.
-
-User favorite lists are stored securely in Firestore. No unnecessary personal data is collected or shared.
-
-## Screenshots
-
-<p align="center">
-  <img src="assets/for_doc/login.jpg" width="220" />
-  <img src="assets/for_doc/main_page.jpg" width="220" />
-  <img src="assets/for_doc/detail_page.jpg" width="220" />
-  <img src="assets/for_doc/favorite_list.jpg" width="220" />
-  <img src="assets/for_doc/settings.jpg" width="220" />
-</p>
-
-## Demo Video
-
-<p align="center">
-  <a href="https://github.com/user-attachments/assets/3b5b1d2d-8f8d-4126-8dde-f39cfb11dabc">
-    <img src="assets/for_doc/main_page.jpg" width="300" alt="Demo Video Preview" />
-  </a>
-</p>
-
-## Authors
-
-This application was developed by Nursultan Nazarbay and Mukagali Amankossov.
-
-
+User security and data protection were considered throughout the development process. Firebase Authentication is used to securely handle user registration and login. User passwords are never stored within the application.
+The app does not request access to sensitive device permissions such as camera, location, or storage. Favorite coin data is stored securely in Firestore, and no unnecessary personal information is collected or shared.

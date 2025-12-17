@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>API_KEY</key>
+	<string>AIzaSyAeIXM3-y6g29nIxLJh6wE7u7cdhKW8h_A</string>
+	<key>GCM_SENDER_ID</key>
+	<string>762788891698</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.ryuu05.cryptoCoins</string>
+	<key>PROJECT_ID</key>
+	<string>crypto-coin-list-eb43e</string>
+	<key>STORAGE_BUCKET</key>
+	<string>crypto-coin-list-eb43e.firebasestorage.app</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:762788891698:ios:ef1018c0d59867c8db802b</string>
+</dict>
+</plist>
