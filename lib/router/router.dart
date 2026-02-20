@@ -8,7 +8,7 @@ import 'package:flutter_practice/features/crypto_settings/screens/crypto_setting
 
 final routes = {
   '/': (context) => Authlayout(),
-  '/login': (context) => LoginScren(),
+  '/login': (context) => LoginScreen(),
   '/register': (context) => Register(),
   '/coinlist': (context) => const CryptoListScreen(),
   '/coin': (context) => const CryptoCoinScreen(),
