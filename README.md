@@ -26,17 +26,14 @@ UI → Event → BLoC → State → UI
 - Git
 
 
-screenshots/simulator_screenshot_65510A3B-2D58-4E65-9AB3-EB0F4F07E043.png
+## 🖼 Screenshots
+![Screenshot 1](screenshots/simulator_screenshot_65510A3B-2D58-4E65-9AB3-EB0F4F07E043.png)
+![Screenshot 2](screenshots/simulator_screenshot_593A3998-431B-4A8B-B4B9-43ED7E955241.png)
+![Screenshot 3](screenshots/simulator_screenshot_E304B64E-A7C9-4E15-8AFD-4CD92E8B34A1.png)
+![Screenshot 4](screenshots/simulator_screenshot_CD86A036-EC97-48C4-8C0F-1DDEBF1633A5.png)
+![Screenshot 5](screenshots/simulator_screenshot_32961C20-E07A-4E9E-BFB6-74E56F3CA15A.png)
+![Screenshot 6](screenshots/simulator_screenshot_8052BC0C-1827-46C1-A3B3-CB2E5757EF02.png)
 
-screenshots/simulator_screenshot_593A3998-431B-4A8B-B4B9-43ED7E955241.png
-
-screenshots/simulator_screenshot_E304B64E-A7C9-4E15-8AFD-4CD92E8B34A1.png
-
-screenshots/simulator_screenshot_CD86A036-EC97-48C4-8C0F-1DDEBF1633A5.png
-
-screenshots/simulator_screenshot_32961C20-E07A-4E9E-BFB6-74E56F3CA15A.png
-
-screenshots/simulator_screenshot_8052BC0C-1827-46C1-A3B3-CB2E5757EF02.png
 
 ## ⚙️ How to run
 
