@@ -19,7 +19,7 @@ class Authlayout extends StatelessWidget {
             } else if (snapshot.hasData) {
               widget = CryptoListScreen();
             } else {
-              widget = LoginScren();
+              widget = LoginScreen();
             }
             return widget;
           },
